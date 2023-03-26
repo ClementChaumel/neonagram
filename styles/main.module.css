@@ -1,0 +1,28 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.neon {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 100px;
+  color: #fff;
+}
+
+.on {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 60px #f00, 0 0 70px #f00;
+  animation: neon 1s ease-in-out infinite alternate;
+}
+
+.off {
+  border: 1px solid #fff;
+  text-shadow: none;
+}
