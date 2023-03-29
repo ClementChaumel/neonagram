@@ -7,7 +7,13 @@ import useSWR from "swr";
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function Neon({ word }: { word: string | string[] }) {
+export default function Neon({
+  word,
+  min,
+}: {
+  word: string | string[];
+  min: number;
+}) {
   const { data, error } = useSWR("/api/french-words", fetcher);
   const [isReady, setIsReady] = useState<boolean>(false);
   const [currentWord, setCurrentWord] = useState<boolean[]>([]);
@@ -35,34 +41,39 @@ export default function Neon({ word }: { word: string | string[] }) {
       const wordList = [word];
       normalisedWord.split("").forEach((letter: string, index: number) => {
         data.forEach((word: string) => {
-          if (word.startsWith(letter)) {
-            const turnedOnLetters = Array.from(
-              { length: normalisedWord.length },
-              () => false
-            );
+          if (word.length >= min) {
+            if (word.startsWith(letter)) {
+              const turnedOnLetters = Array.from(
+                { length: normalisedWord.length },
+                () => false
+              );
 
-            let turnedOnLettersIndex = index;
+              let turnedOnLettersIndex = index;
 
-            word.split("").forEach((current: string, currentIndex: number) => {
-              for (
-                let i = turnedOnLettersIndex;
-                i < turnedOnLetters.length;
-                i++
+              word
+                .split("")
+                .forEach((current: string, currentIndex: number) => {
+                  for (
+                    let i = turnedOnLettersIndex;
+                    i < turnedOnLetters.length;
+                    i++
+                  ) {
+                    if (current === normalisedWord[i]) {
+                      turnedOnLetters[i] = true;
+                      turnedOnLettersIndex = i;
+                      break;
+                    }
+                  }
+                });
+
+              // if numbers of letters in turnedOnLetters is equal to the number of letters in the word then push it to the foundWords array
+              if (
+                turnedOnLetters.filter((letter) => letter).length ===
+                word.length
               ) {
-                if (current === normalisedWord[i]) {
-                  turnedOnLetters[i] = true;
-                  turnedOnLettersIndex = i;
-                  break;
-                }
+                setFoundWords((prev) => [...prev, turnedOnLetters]);
+                wordList.push(word);
               }
-            });
-
-            // if numbers of letters in turnedOnLetters is equal to the number of letters in the word then push it to the foundWords array
-            if (
-              turnedOnLetters.filter((letter) => letter).length === word.length
-            ) {
-              setFoundWords((prev) => [...prev, turnedOnLetters]);
-              wordList.push(word);
             }
           }
         });
