@@ -10,19 +10,173 @@
   align-items: center;
 }
 
+.wrapper{
+  width: 100vw;
+  padding: 0 2rem;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    color: #6b1839;
+  }
+  50% {
+    opacity: 0.5;
+    color: #6b1839;
+  }
+  100% {
+    opacity: 1;
+    color: #ffe6ff;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.appear {
+  animation: appear 2s forwards;
+}
+
 
 .neon {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 100px;
+  opacity: 0;
+  font-weight: 400;
   color: #fff;
+  text-align: center;
+  color: #ffe6ff;
 }
 
 .on {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 60px #f00, 0 0 70px #f00;
-  animation: neon 1s ease-in-out infinite alternate;
+  -webkit-text-stroke: 2px #ff2483;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: flicker 3s infinite;
 }
 
 .off {
-  border: 1px solid #fff;
-  text-shadow: none;
+  /* text-shadow: none; */
 }
