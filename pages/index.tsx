@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.index}>
-        <Neon word={"Spectaculaire"} />
+        <Neon word={"Spectaculaire"} min={3} />
         <input
           type="text"
           placeholder="spectaculaire"
