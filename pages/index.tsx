@@ -2,6 +2,11 @@ import styles from "@/styles/main.module.css";
 import Neon from "@/components/Neon";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Image from "next/image";
+import wall from "images/wall.jpg";
+import Button from "@mui/material/Button";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
 
 export default function Home() {
   const router = useRouter();
@@ -17,32 +22,59 @@ export default function Home() {
   };
 
   const handleMinChange = (e: any) => {
-    setMinLenght(e?.currentTarget?.value || 2);
+    setMinLenght(e?.currentTarget?.value > 2 ? e?.currentTarget?.value : 2);
   };
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+      primary: {
+        main: "#ff65bd",
+        contrastText: "#ff2483",
+      },
+    },
+  });
+
   return (
-    <div className={styles.container}>
-      <div className={styles.index}>
-        <Neon word={"Spectaculaire"} min={3} />
-        <input
-          type="text"
-          placeholder="spectaculaire"
-          className={styles.input}
-          onChange={handleWordChange}
-        ></input>
-        <div>
-          <label>Longueur minimum des mots </label>
-          <input
-            type="number"
-            placeholder="2"
-            className={styles.input}
-            onChange={handleMinChange}
-          ></input>
+    <ThemeProvider theme={theme}>
+      <Image
+        alt="wall"
+        src={wall}
+        placeholder="blur"
+        quality={100}
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+        }}
+      />
+      <div className={styles.container}>
+        <div className={styles.index}>
+          <Neon word={"Spectaculaire"} min={3} />
+          <div className={styles.inputwrapper}>
+            <TextField
+              id="outlined-basic"
+              placeholder="Spectaculaire"
+              label="Votre mot"
+              variant="outlined"
+              onChange={handleWordChange}
+            />
+            <Button onClick={handleClick} variant="outlined">
+              Créer
+            </Button>
+          </div>
+          <div>
+            <TextField
+              type="number"
+              id="outlined-basic"
+              placeholder="2"
+              label="Longueur minimum des mots"
+              variant="outlined"
+              onChange={handleMinChange}
+            />
+          </div>
         </div>
-        <button onClick={handleClick} className={styles.creer}>
-          Créer
-        </button>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }

@@ -1,3 +1,4 @@
+
 .container {
   position: fixed;
   top: 0;
@@ -17,16 +18,9 @@
   gap: 2rem;
 }
 
-.input {
-  text-transform: uppercase;
-  background: transparent;
-  font-size: 3rem;
-  border: 2px solid #ffe6ff;
-  text-align: center;
-  border-radius: 20px;
-  box-shadow: 0 0 0.6rem #ffe6ff, inset 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
-    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
-    0 0rem 0rem 3px #ff2483, inset 0 0 0rem 2px #ff2483;
+.inputwrapper {
+  display: flex;
+  gap: 2rem;
 }
 
 .input::placeholder{
