@@ -41,6 +41,48 @@
   font-size: 22px;
 }
 
+.credit {
+  bottom: 1rem;
+  font-family: system-ui;
+  font-size: .8rem;
+  position: fixed;
+  right: 1rem;
+  font-weight: 100;
+  text-decoration: none;
+  display: inline-flex;
+  text-wrap: nowrap;
+  gap: 0.1rem;
+  align-items: center;
+  color: transparent;
+  background: transparent;
+  transition: color .2s ease-in-out, background .2s ease-in-out;
+  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+}
+
+.credit:hover {
+  background: #3d0eaf;
+  color: #f9f3f3;
+}
+
+.credit > img {
+  position: relative !important;
+  height: 1.5rem !important;
+  margin-left: 0.3rem;
+  object-fit: contain;
+  opacity: 0.5;
+  transition: opacity .2s ease-in-out;
+}
+
+.credit:hover > img {
+  opacity: 1;
+}
+
+.credit > span {
+  font-weight: bold;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

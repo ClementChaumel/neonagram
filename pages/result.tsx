@@ -2,7 +2,7 @@ import styles from "@/styles/main.module.css";
 import { useRouter } from "next/router";
 import Neon from "@/components/Neon";
 import Image from "next/image";
-import wall from "images/wall.jpg";
+import wall from "images/theatre-de-la-cite.jpg";
 
 export default function Result() {
   const router = useRouter();

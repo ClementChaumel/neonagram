@@ -3,7 +3,7 @@ import Neon from "@/components/Neon";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Image from "next/image";
-import wall from "images/wall.jpg";
+import wall from "images/theatre-de-la-cite.jpg";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
